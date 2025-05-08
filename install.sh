@@ -179,6 +179,18 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 # =========================================
+# Rosetta 2のインストール（Apple Silicon Macの場合）
+# =========================================
+if [[ "$(uname -m)" == "arm64" ]]; then
+  if ! /usr/bin/pgrep -q oahd; then
+    echo "Installing Rosetta 2..."
+    sudo softwareupdate --install-rosetta --agree-to-license
+  else
+    echo "Rosetta 2 is already installed."
+  fi
+fi
+
+# =========================================
 # Homebrewパッケージのインストール
 # =========================================
 if [ -f "$DOTFILES_DIR/Brewfile" ]; then
@@ -187,24 +199,16 @@ if [ -f "$DOTFILES_DIR/Brewfile" ]; then
 fi
 
 # =========================================
-# Powerlineフォントの追加インストール
+# フォントのインストール
 # =========================================
-echo "Installing additional Powerline fonts..."
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-./install.sh
-cd ..
-rm -rf fonts
-echo "Powerline fonts installation completed."
-
-# =========================================
-# App Storeアプリケーションのインストール
-# =========================================
-# AppStoreアプリケーションはBrewfileで管理するため、この部分は不要
-# if [ -f "$DOTFILES_DIR/AppStore.txt" ]; then
-#     echo "Installing App Store applications..."
-#     mas install < "$DOTFILES_DIR/AppStore.txt"
-# fi
+echo "Installing fonts..."
+# Hack Nerd Fontのインストール
+if ! brew list --cask font-hack-nerd-font &>/dev/null; then
+    echo "Installing Hack Nerd Font..."
+    brew install --cask font-hack-nerd-font
+else
+    echo "Hack Nerd Font is already installed."
+fi
 
 # =========================================
 # VSCode/Cursor拡張機能のインストール
@@ -212,8 +216,21 @@ echo "Powerline fonts installation completed."
 install_vscode_extensions() {
   local extension=$1
   local cmd=$2
+  
+  # 拡張機能が既にインストールされているか確認
+  if $cmd --list-extensions | grep -q "^$extension$"; then
+    echo "Extension $extension is already installed for $cmd"
+    return 0
+  fi
+  
   echo "Installing extension with $cmd: $extension"
-  $cmd --install-extension "$extension" --force || echo "Failed to install $extension with $cmd"
+  if $cmd --install-extension "$extension" --force; then
+    echo "Successfully installed $extension with $cmd"
+    return 0
+  else
+    echo "Failed to install $extension with $cmd"
+    return 1
+  fi
 }
 
 EXTENSIONS_FILE="$DOTFILES_DIR/.config/vscode/extensions"
@@ -221,6 +238,9 @@ echo "Checking for VSCode/Cursor extensions..."
 
 if [ -f "$EXTENSIONS_FILE" ]; then
   echo "Installing VSCode/Cursor extensions from $EXTENSIONS_FILE..."
+  
+  # インストール失敗した拡張機能を記録
+  failed_extensions=()
   
   while IFS= read -r extension || [ -n "$extension" ]; do
     # Skip empty lines or comments
@@ -230,15 +250,26 @@ if [ -f "$EXTENSIONS_FILE" ]; then
     
     # Try to install with code (VSCode) command
     if command -v code &> /dev/null; then
-      install_vscode_extensions "$extension" "code"
+      if ! install_vscode_extensions "$extension" "code"; then
+        failed_extensions+=("code:$extension")
+      fi
     fi
     
     # Try to install with cursor command
     if command -v cursor &> /dev/null; then
-      install_vscode_extensions "$extension" "cursor"
+      if ! install_vscode_extensions "$extension" "cursor"; then
+        failed_extensions+=("cursor:$extension")
+      fi
     fi
   done < "$EXTENSIONS_FILE"
-  echo "VSCode/Cursor extensions installation completed."
+  
+  # インストール結果の報告
+  if [ ${#failed_extensions[@]} -eq 0 ]; then
+    echo "All VSCode/Cursor extensions were installed successfully."
+  else
+    echo "The following extensions failed to install:"
+    printf '%s\n' "${failed_extensions[@]}"
+  fi
 else
   echo "Extensions file not found: $EXTENSIONS_FILE. Skipping VSCode/Cursor extensions installation."
 fi

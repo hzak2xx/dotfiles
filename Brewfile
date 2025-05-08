@@ -1,6 +1,4 @@
-tap "hashicorp/tap"
-# homebrew/cask-fonts は非推奨になりました
-# tap "homebrew/cask-fonts"
+tap "hashicorp/tap" 
 tap "olets/tap"
 tap "supabase/tap"
 
@@ -57,15 +55,8 @@ brew "olets/tap/zsh-abbr"
 brew "starship"
 brew "zinit"
 
-# fonts - 標準のcaskとしてインストール
-cask "homebrew/cask-fonts/font-hack-nerd-font"
-cask "homebrew/cask-fonts/font-fira-code"
-cask "homebrew/cask-fonts/font-fira-mono"
-cask "homebrew/cask-fonts/font-fira-mono-for-powerline"
-cask "homebrew/cask-fonts/font-source-code-pro"
-cask "homebrew/cask-fonts/font-source-code-pro-for-powerline"
-cask "homebrew/cask-fonts/font-dejavu-sans-mono-for-powerline"
-cask "homebrew/cask-fonts/font-inconsolata-for-powerline"
+# fonts
+cask "font-hack-nerd-font"
 
 # GUI applications
 cask "visual-studio-code"
