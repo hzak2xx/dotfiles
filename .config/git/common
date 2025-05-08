@@ -1,0 +1,25 @@
+[core]
+	editor = nvim
+	quotepath = false
+	precomposeunicode = true
+	autocrlf = input
+	ignorecase = false
+
+[color]
+	ui = auto
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[pull]
+	ff = only
+
+[fetch]
+	prune = true
+
+[diff]
+	colorMoved = default
+
+[init]
+	defaultBranch = main 

@@ -1,0 +1,19 @@
+# macOS関連
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Thumbnails
+._*
+
+# 一時ファイル
+*~
+*.swp
+*.swo
+
+# ログファイル
+*.log
+
+# バックアップファイル
+*.backup 

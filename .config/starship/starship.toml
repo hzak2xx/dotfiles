@@ -1,0 +1,80 @@
+# プロンプトの右側にフォーマットを設定（時間を表示）
+format = "$all$directory$character"
+right_format = "$cmd_duration$time"
+
+# コマンド実行にかかった時間を表示（10ms以上かかった場合）
+[cmd_duration]
+min_time = 10
+format = "[$duration]($style) "
+
+# 時刻を表示
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%H:%M:%S"
+
+# ディレクトリ表示のスタイル
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+style = "blue"
+
+# Gitブランチのスタイル
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "green"
+
+# Gitのステータスのスタイル
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "red"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+
+# AWS
+[aws]
+format = '[$symbol($profile )(\($region\) )]($style)'
+
+# Kubernetes
+[kubernetes]
+format = '[$symbol$context( \($namespace\))]($style) '
+disabled = false
+style = "cyan"
+
+# コンテキストが"dev"のときは色を変える
+[kubernetes.context_aliases]
+"dev" = "dev"
+"staging" = "staging"
+"production" = "prod"
+
+[kubernetes.context_color]
+"dev" = "green"
+"staging" = "yellow"
+"production" = "red"
+
+# Node.js
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+# Python
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+# Rust
+[rust]
+format = "[$symbol($version )]($style)"
+
+# Docker
+[docker_context]
+format = "[$symbol$context]($style) "
+
+# パッケージ
+[package]
+format = "[$symbol$version]($style) "
+
+# キャラクターのスタイル
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)" 

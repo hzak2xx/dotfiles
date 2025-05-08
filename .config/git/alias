@@ -1,0 +1,39 @@
+[alias]
+	# 基本コマンド
+	s = status
+	a = add
+	aa = add -A
+	c = commit
+	cm = commit -m
+	ca = commit --amend
+	cane = commit --amend --no-edit
+	
+	# ブランチ関連
+	b = branch
+	co = checkout
+	cob = checkout -b
+	br = branch -r
+	ba = branch -a
+	
+	# ログ関連
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	
+	# 差分関連
+	d = diff
+	ds = diff --staged
+	dc = diff --cached
+	
+	# リモート関連
+	f = fetch
+	p = push
+	pl = pull
+	
+	# その他
+	st = stash
+	stp = stash pop
+	sts = stash save
+	stl = stash list
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	recent = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/ 

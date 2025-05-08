@@ -1,0 +1,68 @@
+{
+    "breadcrumbs.enabled": true,
+    "code-runner.runInTerminal": true,
+    "dart.debugExternalPackageLibraries": true,
+    "dart.debugSdkLibraries": true,
+    "editor.autoClosingBrackets": "always",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "editor.fontSize": 14,
+    "editor.fontLigatures": false,
+    "editor.inlineSuggest.enabled": true,
+    "emmet.includeLanguages": {
+        "erb": "html",
+        "wxml": "html"
+    },
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "explorer.confirmPasteNative": false,
+    "files.autoSave": "off",
+    "files.associations": {
+        "*.erb": "erb",
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript"
+    },
+    "files.insertFinalNewline": true,
+    "git.autofetch": true,
+    "githubPullRequests.pullBranch": "never",
+    "github.copilot.enable": {
+        "*": true
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "json.schemaDownload.enable": true,
+    "minapp-vscode.disableAutoConfig": true,
+    "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "vscode_vibrancy": {
+        "type": "auto",
+        "theme": "Monokai Pro",
+        "opacity": 0.01
+    },
+    "vscode-edge-devtools.webhintInstallNotification": true,
+    "vscode-edge-devtools.webhint": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "window.titleBarStyle": "custom",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "prisma.showPrismaDataPlatformNotification": false,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "workbench.colorCustomizations": {
+        "terminal.background": "#00000000"
+    },
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.colorCustomizations"
+    ],
+    "cursor.aipreview.enabled": true,
+    "cursor.chat.alwaysSearchWeb": true,
+    "cursor.chat.collapseInputBoxPills": true,
+    "cursor.chat.premiumChatAutoScrollWhenAtBottom": true,
+    "cursor.chat.showSuggestedFiles": true,
+    "cursor.chat.smoothStreaming": true,
+    "hediet.vscode-drawio.resizeImages": null
+}
