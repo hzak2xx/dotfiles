@@ -85,4 +85,5 @@ cask "chatgpt"
 cask "claude"
 
 # App Store applications
+mas "LINE", id: 539883307
 mas "Whisper Transcription", id: 1668083311
