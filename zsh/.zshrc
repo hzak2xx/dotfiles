@@ -10,7 +10,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 # nvm end
 
 # pnpm
-export PNPM_HOME="/Users/hiroakisumizaki/Library/pnpm"
+export PNPM_HOME="${HOME}/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -32,11 +32,15 @@ source "${ZINIT_HOME}/zinit.zsh"
 # plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light olets/zsh-abbr
 
+# 補完の履歴を上下キーで検索できるようにする
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 zinit ice wait"1"
-# fzf-tab plugin
 zinit light Aloxaf/fzf-tab
 
 # fzf-tab設定
@@ -70,6 +74,7 @@ autoload -Uz compinit
 compinit
 
 # starship
+export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -179,6 +179,45 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 
 # =========================================
+# nvmのインストール
+# =========================================
+NVM_DIR="$HOME/.nvm"
+if [ ! -d "$NVM_DIR" ]; then
+    echo "Installing nvm..."
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+    
+    # シェル環境の設定を読み込む
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    
+    # Node.js LTSバージョンをインストール
+    echo "Installing Node.js LTS version..."
+    nvm install --lts
+    nvm alias default node
+    
+    echo "Node.js $(node -v) has been installed via nvm."
+else
+    echo "nvm is already installed."
+fi
+
+# =========================================
+# yarnのインストール
+# =========================================
+if ! type yarn >/dev/null 2>&1; then
+    echo "Installing yarn..."
+    # nvmの環境を読み込む
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    
+    # yarnをインストール
+    npm install -g yarn
+    echo "yarn $(yarn --version) has been installed."
+else
+    echo "yarn is already installed."
+fi
+
+# =========================================
 # Rosetta 2のインストール（Apple Silicon Macの場合）
 # =========================================
 if [[ "$(uname -m)" == "arm64" ]]; then
