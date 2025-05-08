@@ -218,6 +218,33 @@ else
 fi
 
 # =========================================
+# pnpmのインストール
+# =========================================
+if ! type pnpm >/dev/null 2>&1; then
+    echo "Installing pnpm..."
+    # nvmの環境を読み込む
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    
+    # pnpmをインストール
+    npm install -g pnpm
+    
+    # pnpmのセットアップ（既存の設定があれば上書き）
+    pnpm setup --force
+    
+    # 設定を読み込む
+    export PNPM_HOME="${HOME}/Library/pnpm"
+    case ":$PATH:" in
+      *":$PNPM_HOME:"*) ;;
+      *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+    
+    echo "pnpm $(pnpm --version) has been installed."
+else
+    echo "pnpm is already installed."
+fi
+
+# =========================================
 # Rosetta 2のインストール（Apple Silicon Macの場合）
 # =========================================
 if [[ "$(uname -m)" == "arm64" ]]; then
