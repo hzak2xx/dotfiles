@@ -81,6 +81,8 @@ cask "slack"
 cask "zoom"
 cask "obs"
 cask "spotify"
+cask "chatgpt"
+cask "claude"
 
 # App Store applications
 mas "Whisper Transcription", id: 1668083311
