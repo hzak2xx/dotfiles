@@ -87,3 +87,6 @@ setopt hist_ignore_dups
 setopt share_history
 setopt hist_ignore_space
 setopt hist_reduce_blanks
+
+# エイリアス
+alias g="git"
