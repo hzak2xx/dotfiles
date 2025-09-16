@@ -167,5 +167,9 @@
     "accessibility.signals.lineHasWarning": {
         "sound": "off",
         "announcement": "auto"
-    }
+    },
+    "workbench.editorAssociations": {
+        "*.svg": "default"
+    },
+    "dart.mcpServerLogFile": null
 }
