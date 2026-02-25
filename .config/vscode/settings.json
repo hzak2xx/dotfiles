@@ -58,13 +58,6 @@
     "workbench.settings.applyToAllProfiles": [
         "workbench.colorCustomizations"
     ],
-    "cursor.aipreview.enabled": true,
-    "cursor.chat.alwaysSearchWeb": true,
-    "cursor.chat.collapseInputBoxPills": true,
-    "cursor.chat.premiumChatAutoScrollWhenAtBottom": true,
-    "cursor.chat.showSuggestedFiles": true,
-    "cursor.chat.smoothStreaming": true,
-    "hediet.vscode-drawio.resizeImages": null,
     "accessibility.signals.lineHasBreakpoint": {
         "sound": "off",
         "announcement": "auto"
@@ -171,5 +164,17 @@
     "workbench.editorAssociations": {
         "*.svg": "default"
     },
-    "dart.mcpServerLogFile": null
+    "dart.mcpServerLogFile": null,
+    "security.promptForLocalFileProtocolHandling": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "json.schemaDownload.trustedDomains": {
+        "https://schemastore.azurewebsites.net/": true,
+        "https://raw.githubusercontent.com/": true,
+        "https://www.schemastore.org/": true,
+        "https://json.schemastore.org/": true,
+        "https://json-schema.org/": true,
+        "https://biomejs.dev": true
+    },
+    "gitlens.ai.model": "vscode",
+    "workbench.secondarySideBar.defaultVisibility": "hidden"
 }

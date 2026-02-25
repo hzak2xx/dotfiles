@@ -12,6 +12,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # nvm end
 
+# npm (.envから読み込み)
+[ -f "${HOME}/.env" ] && export $(grep -v '^#' "${HOME}/.env" | xargs)
+
 # pnpm
 export PNPM_HOME="${HOME}/Library/pnpm"
 case ":$PATH:" in
@@ -93,3 +96,10 @@ setopt hist_reduce_blanks
 
 # エイリアス
 alias g="git"
+
+# bun completions
+[ -s "/Users/hiroakisumizaki/.bun/_bun" ] && source "/Users/hiroakisumizaki/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

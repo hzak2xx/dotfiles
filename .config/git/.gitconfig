@@ -5,3 +5,9 @@
 	path = /Users/hiroakisumizaki/.config/git/common
 	path = /Users/hiroakisumizaki/.config/git/alias
 	path = /Users/hiroakisumizaki/.config/delta/config
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
