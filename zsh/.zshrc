@@ -1,19 +1,18 @@
+# =========================================
+# 環境変数 / PATH
+# =========================================
+
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
-# homebrew end
 
 # local bin
 export PATH="$HOME/.local/bin:$PATH"
 
 # nvm
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# nvm end
-
-# npm (.envから読み込み)
-[ -f "${HOME}/.env" ] && export $(grep -v '^#' "${HOME}/.env" | xargs)
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # pnpm
 export PNPM_HOME="${HOME}/Library/pnpm"
@@ -21,13 +20,33 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # puppeteer
 export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-export PUPPETEER_EXECUTABLE_PATH=`which chromium`
+export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
 
-# zinit
+# .envから環境変数を読み込み
+[ -f "${HOME}/.env" ] && export $(grep -v '^#' "${HOME}/.env" | xargs)
+
+# =========================================
+# Zshオプション
+# =========================================
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt hist_ignore_dups
+setopt share_history
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+
+# =========================================
+# zinit / プラグイン
+# =========================================
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ ! -d "$ZINIT_HOME" ]; then
     mkdir -p "$(dirname $ZINIT_HOME)"
@@ -35,31 +54,37 @@ if [ ! -d "$ZINIT_HOME" ]; then
 fi
 source "${ZINIT_HOME}/zinit.zsh"
 
-# plugins
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-history-substring-search
 zinit light zdharma-continuum/fast-syntax-highlighting
 zinit light olets/zsh-abbr
 
-# 補完の履歴を上下キーで検索できるようにする
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 zinit ice wait"1"
 zinit light Aloxaf/fzf-tab
 
-# fzf-tab設定
-# プレビューウィンドウを有効にする
-zstyle ':fzf-tab:complete:*' fzf-preview 'less ${(Q)realpath}'
+# =========================================
+# 補完
+# =========================================
+autoload -Uz compinit
+compinit
 
+# =========================================
+# キーバインド
+# =========================================
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# =========================================
+# fzf-tab設定
+# =========================================
 # tab補完でファイルをプレビュー
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always ${(Q)realpath} 2>/dev/null || ls -l $realpath'
 
 # ディレクトリの中身をプレビュー
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -la $realpath'
 
-# git checkoutブランチのプレビュー
+# git操作のプレビュー
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
     'git diff $word | delta'
 zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
@@ -75,31 +100,27 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
 # 配色をカスタマイズ
 zstyle ':fzf-tab:*' fzf-flags --color=bg+:23
 
-# Load completion system
-autoload -Uz compinit
-compinit
-
+# =========================================
+# ツール初期化
+# =========================================
 # starship
 export STARSHIP_CONFIG="${HOME}/.config/starship/starship.toml"
 eval "$(starship init zsh)"
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# 基本的なZshの設定
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt hist_ignore_dups
-setopt share_history
-setopt hist_ignore_space
-setopt hist_reduce_blanks
+# direnv
+eval "$(direnv hook zsh)"
 
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# =========================================
 # エイリアス
+# =========================================
 alias g="git"
-
-# bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+alias ls="eza"
+alias ll="eza -l --icons --git"
+alias la="eza -la --icons --git"
+alias lt="eza --tree --icons --level=2"

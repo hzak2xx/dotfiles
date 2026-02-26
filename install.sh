@@ -43,6 +43,14 @@ else
 fi
 
 # =========================================
+# Homebrewパッケージのインストール
+# =========================================
+if [ -f "$DOTFILES_DIR/Brewfile" ]; then
+    echo "Installing Homebrew packages from Brewfile..."
+    brew bundle --file="$DOTFILES_DIR/Brewfile"
+fi
+
+# =========================================
 # Xcodeコマンドラインツールのインストール
 # =========================================
 # Check if command line tools are installed
@@ -64,6 +72,23 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
   defaults write md.obsidian ApplePressAndHoldEnabled -bool false
   defaults write io.cursor.Cursor ApplePressAndHoldEnabled -bool false
+
+  # dutiでデフォルトアプリケーションをVSCodeに設定
+  echo "Setting default applications with duti..."
+  duti -s com.microsoft.VSCode public.plain-text all
+  duti -s com.microsoft.VSCode public.source-code all
+  duti -s com.microsoft.VSCode .js all
+  duti -s com.microsoft.VSCode .ts all
+  duti -s com.microsoft.VSCode .tsx all
+  duti -s com.microsoft.VSCode .jsx all
+  duti -s com.microsoft.VSCode .json all
+  duti -s com.microsoft.VSCode .md all
+  duti -s com.microsoft.VSCode .yaml all
+  duti -s com.microsoft.VSCode .yml all
+  duti -s com.microsoft.VSCode .go all
+  duti -s com.microsoft.VSCode .py all
+  duti -s com.microsoft.VSCode .sh all
+  duti -s com.microsoft.VSCode .css all
 elif [[ "$OSTYPE" == "linux"* ]]; then
   # Linux向けのコマンド
   echo "Running on Linux"
@@ -251,6 +276,30 @@ else
 fi
 
 # =========================================
+# bunのインストール
+# =========================================
+if ! type bun >/dev/null 2>&1; then
+    echo "Installing bun..."
+    curl -fsSL https://bun.sh/install | bash
+    echo "bun has been installed."
+else
+    echo "bun is already installed."
+fi
+
+# =========================================
+# Claude Codeのインストール
+# =========================================
+if ! type claude >/dev/null 2>&1; then
+    echo "Installing Claude Code..."
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    npm install -g @anthropic-ai/claude-code
+    echo "Claude Code $(claude --version) has been installed."
+else
+    echo "Claude Code is already installed."
+fi
+
+# =========================================
 # Rosetta 2のインストール（Apple Silicon Macの場合）
 # =========================================
 if [[ "$(uname -m)" == "arm64" ]]; then
@@ -260,14 +309,6 @@ if [[ "$(uname -m)" == "arm64" ]]; then
   else
     echo "Rosetta 2 is already installed."
   fi
-fi
-
-# =========================================
-# Homebrewパッケージのインストール
-# =========================================
-if [ -f "$DOTFILES_DIR/Brewfile" ]; then
-    echo "Installing Homebrew packages from Brewfile..."
-    brew bundle --file="$DOTFILES_DIR/Brewfile"
 fi
 
 # =========================================
@@ -290,7 +331,9 @@ install_vscode_extensions() {
   local cmd=$2
   
   # 拡張機能が既にインストールされているか確認
-  if $cmd --list-extensions | grep -q "^$extension$"; then
+  local installed
+  installed=$($cmd --list-extensions 2>/dev/null)
+  if echo "$installed" | grep -q "^$extension$"; then
     echo "Extension $extension is already installed for $cmd"
     return 0
   fi

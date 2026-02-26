@@ -8,6 +8,6 @@
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential
 [include]
-	path = ~/.config/git/common
-	path = ~/.config/git/alias
-	path = ~/.config/delta/config
+	path = /Users/hiroakisumizaki/.config/git/common
+	path = /Users/hiroakisumizaki/.config/git/alias
+	path = /Users/hiroakisumizaki/.config/delta/config

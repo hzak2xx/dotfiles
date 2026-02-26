@@ -6,10 +6,12 @@ auto-update-channel = tip
 font-size = 14
 # 行間を少し広げてモダンにする
 adjust-cell-height = 10%
-# フォントファミリー 
+# フォント 
 font-family = "Hack Nerd Font Mono"
+font-family = "Hiragino Sans ProN"
+font-feature = -dlig
 # アイコン
-macos-icon = retro
+macos-icon = holographic
 
 # テーマ
 theme = Monokai Pro
@@ -68,7 +70,7 @@ clipboard-write = allow
 quick-terminal-position = top
 quick-terminal-screen = main
 quick-terminal-animation-duration = 0.3
-keybind = global:cmd+shift+t=toggle_quick_terminal
+keybind = global:cmd+ctrl+t=toggle_quick_terminal
 
 # --- キーバインド設定（画面分割） ---
 #  Cmd+Enter で「下に」分割
