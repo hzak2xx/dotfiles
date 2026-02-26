@@ -2,6 +2,6 @@
 	name = hzak2xx
 	email = hiroakisumizaki@gmail.com
 [include]
-	path = /Users/hiroakisumizaki/.config/git/common
-	path = /Users/hiroakisumizaki/.config/git/alias
-	path = /Users/hiroakisumizaki/.config/delta/config
+	path = ~/.config/git/common
+	path = ~/.config/git/alias
+	path = ~/.config/delta/config

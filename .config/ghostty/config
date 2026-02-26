@@ -1,0 +1,82 @@
+# Ghosttyの設定ファイル
+auto-update-channel = tip
+
+# --- 見た目・フォント ---
+# フォントサイズ（お好みで調整してください）
+font-size = 14
+# 行間を少し広げてモダンにする
+adjust-cell-height = 10%
+# フォントファミリー 
+font-family = "Hack Nerd Font Mono"
+
+# テーマ
+theme = Monokai Pro
+
+background = #101d2e
+foreground = #b4dbf4
+cursor-color = #9c9e9d
+cursor-text = #fefefe
+selection-background = #626880
+selection-foreground = #c6d0f5
+palette = 0=#000000
+palette = 1=#ed766c
+palette = 2=#6fefa0
+palette = 3=#fdfb7e
+palette = 4=#7BADFF
+palette = 5=#fc73fc
+palette = 6=#73f9fc
+palette = 7=#c7c7c7
+palette = 8=#666666
+palette = 9=#ec6862
+palette = 10=#9afb93
+palette = 11=#fefb7a
+palette = 12=#dc5be6
+palette = 13=#72f6fc
+palette = 14=#8ef9fd
+palette = 15=#fefefe
+
+# --- ウィンドウ・透明度 ---
+# 背景を透過させてブラー（すりガラス効果）を入れる
+background-opacity = 0.70
+background-blur-radius = 20
+
+# ウィンドウ内の余白を入れて圧迫感を減らす
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+# --- Macネイティブな挙動 ---
+# タイトルバーを透明にしてスッキリさせる
+macos-titlebar-style = transparent
+# フルスクリーン時にMac標準の挙動にする
+macos-window-shadow = true
+# 入力中はマウスカーソルを隠す
+mouse-hide-while-typing = true
+# デスクトップ通知を有効にする
+desktop-notifications = true
+
+# --- 操作性 ---
+# 選択しただけでクリップボードにコピー
+copy-on-select = true
+# クリップボードの読み書きを許可
+clipboard-read = allow
+clipboard-write = allow
+
+# --- キーバインド設定（画面分割） ---
+#  Cmd+Enter で「下に」分割
+keybind = cmd+enter=new_split:down
+# Cmd+Shift+Enter で「右に」分割
+keybind = cmd+shift+enter=new_split:right
+# Cmd + 矢印キー で分割した画面を「移動」
+keybind = cmd+left=goto_split:left
+keybind = cmd+right=goto_split:right
+keybind = cmd+up=goto_split:top
+keybind = cmd+down=goto_split:bottom
+# Cmd + Shift + 矢印キー でサイズを「調整」
+keybind = cmd+shift+left=resize_split:left,20
+keybind = cmd+shift+right=resize_split:right,20
+keybind = cmd+shift+up=resize_split:up,20
+keybind = cmd+shift+down=resize_split:down,20
+
+# Cmd + W で現在の「ペイン（分割）」を閉じる
+keybind = cmd+w=close_surface

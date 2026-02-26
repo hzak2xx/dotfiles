@@ -156,6 +156,12 @@ if [ -f "$DOTFILES_DIR/.config/vscode/settings.json" ]; then
     create_symlink "$DOTFILES_DIR/.config/vscode/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
 fi
 
+# Ghosttyの設定
+mkdir -p "$HOME/Library/Application Support/com.mitchellh.ghostty"
+if [ -f "$DOTFILES_DIR/.config/ghostty/config" ]; then
+    create_symlink "$DOTFILES_DIR/.config/ghostty/config" "$HOME/Library/Application Support/com.mitchellh.ghostty/config"
+fi
+
 # iTerm2の設定
 if [ -d "$DOTFILES_DIR/.config/iterm2" ]; then
     create_symlink "$DOTFILES_DIR/.config/iterm2" "$HOME/.config/iterm2"

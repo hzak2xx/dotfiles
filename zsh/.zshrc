@@ -98,7 +98,7 @@ setopt hist_reduce_blanks
 alias g="git"
 
 # bun completions
-[ -s "/Users/hiroakisumizaki/.bun/_bun" ] && source "/Users/hiroakisumizaki/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
