@@ -1,8 +1,9 @@
 anseki.vscode-color
+anthropic.claude-code
 azemoh.one-monokai
 be5invis.toml
+biomejs.biome
 bradlc.vscode-tailwindcss
-castwide.solargraph
 chflick.firecode
 codezombiech.gitignore
 cschlosser.doxdocgen
@@ -21,7 +22,6 @@ file-icons.file-icons
 formulahendry.code-runner
 gencer.html-slim-scss-css-class-completion
 github.codespaces
-github.copilot
 github.copilot-chat
 github.vscode-pull-request-github
 grapecity.gc-excelviewer
@@ -33,10 +33,10 @@ ionutvmi.path-autocomplete
 jeff-hykin.better-cpp-syntax
 jonkwheeler.styled-components-snippets
 josetr.cmake-language-support-vscode
-lehni.vscode-fix-checksums
 mechatroner.rainbow-csv
 michead.vscode-mesh-viewer
 monokai.theme-monokai-pro-vscode
+ms-azuretools.vscode-containers
 ms-azuretools.vscode-docker
 ms-ceintl.vscode-language-pack-ja
 ms-dotnettools.vscode-dotnet-runtime
@@ -51,6 +51,7 @@ ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-slideshow
 ms-vscode-remote.remote-containers
 ms-vscode.cmake-tools
+ms-vscode.cpp-devtools
 ms-vscode.cpptools
 ms-vscode.cpptools-extension-pack
 ms-vscode.cpptools-themes
@@ -63,12 +64,13 @@ pkief.material-icon-theme
 prisma.prisma
 qiu8310.minapp-vscode
 rangav.vscode-thunder-client
-rebornix.ruby
+rimuruchan.vscode-fix-checksums-next
+rphlmr.vscode-drizzle-orm
 rvest.vs-code-prettier-eslint
 ryanolsonx.solarized
 shanehofstetter.rails-i18n
 shd101wyy.markdown-preview-enhanced
+shopify.ruby-lsp
 sianglim.slim
 twxs.cmake
-visualstudioexptteam.vscodeintellicode
 vscode-icons-team.vscode-icons
