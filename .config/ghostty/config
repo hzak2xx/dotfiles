@@ -8,6 +8,8 @@ font-size = 14
 adjust-cell-height = 10%
 # フォントファミリー 
 font-family = "Hack Nerd Font Mono"
+# アイコン
+macos-icon = retro
 
 # テーマ
 theme = Monokai Pro
@@ -61,6 +63,12 @@ copy-on-select = true
 # クリップボードの読み書きを許可
 clipboard-read = allow
 clipboard-write = allow
+
+# --- クイックターミナル（Cmd+Shift+Tで呼び出し） ---
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.3
+keybind = global:cmd+shift+t=toggle_quick_terminal
 
 # --- キーバインド設定（画面分割） ---
 #  Cmd+Enter で「下に」分割
