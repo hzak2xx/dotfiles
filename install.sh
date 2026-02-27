@@ -97,28 +97,11 @@ fi
 # =========================================
 # Git設定
 # =========================================
-# グローバルで設定されたGitのユーザー名が存在しなければ、ユーザーに名前を尋ねて設定する
-if [ -z "$(git config --global --get user.name)" ]; then
-  echo "Git username is not set. Please enter your username: "
-  read -r user_name
-  git config --global user.name "$user_name"
-  echo "Git username has been set to: $user_name"
-else
-  echo "Git username is already set. Skipping..."
-fi
-
-# グローバルで設定されたGitのメールアドレスが存在しなければ、ユーザーにメールアドレスを尋ねて設定する
-if [ -z "$(git config --global --get user.email)" ]; then
-  echo "Git email is not set. Please enter your email: "
-  read -r user_email
-  git config --global user.email "$user_email"
-  echo "Git email has been set to: $user_email"
-else
-  echo "Git email is already set. Skipping..."
-fi
-
 # Gitの設定ディレクトリの作成
-mkdir -p "$HOME/.config/git" "$HOME/.config/delta"
+mkdir -p "$HOME/.config/git"
+
+# .gitconfigのシンボリックリンク作成
+create_symlink "$DOTFILES_DIR/.config/git/.gitconfig" "$HOME/.gitconfig"
 
 # Git設定ファイルのシンボリックリンク作成（存在する場合）
 if [ -f "$DOTFILES_DIR/.config/git/common" ]; then
@@ -127,18 +110,27 @@ fi
 if [ -f "$DOTFILES_DIR/.config/git/alias" ]; then
   create_symlink "$DOTFILES_DIR/.config/git/alias" "$HOME/.config/git/alias"
 fi
-if [ -f "$DOTFILES_DIR/.config/delta/config" ]; then
-  create_symlink "$DOTFILES_DIR/.config/delta/config" "$HOME/.config/delta/config"
+if [ -f "$DOTFILES_DIR/.config/git/delta" ]; then
+  create_symlink "$DOTFILES_DIR/.config/git/delta" "$HOME/.config/git/delta"
 fi
 
-# Gitの設定ファイルを更新
-git config --global --unset-all include.path >/dev/null 2>&1 || true # include.pathを一度リセット
-# 環境共通の設定を追加する
-git config --global --add include.path "$HOME/.config/git/common"
-# aliasを追加する
-git config --global --add include.path "$HOME/.config/git/alias"
-# deltaの設定を追加する
-git config --global --add include.path "$HOME/.config/delta/config"
+# ローカル設定ファイル（user.name, email等）の作成
+GIT_LOCAL="$HOME/.config/git/local"
+if [ ! -f "$GIT_LOCAL" ]; then
+  echo "Git local config not found. Creating $GIT_LOCAL..."
+  echo "Please enter your Git username: "
+  read -r user_name
+  echo "Please enter your Git email: "
+  read -r user_email
+  cat > "$GIT_LOCAL" <<EOF
+[user]
+	name = $user_name
+	email = $user_email
+EOF
+  echo "Git local config has been created."
+else
+  echo "Git local config already exists. Skipping..."
+fi
 
 # =========================================
 # dotfilesのシンボリックリンク作成
@@ -153,9 +145,6 @@ done
 
 # fzf設定ファイルのシンボリックリンク
 create_symlink "$DOTFILES_DIR/fzf/.fzf.zsh" "$HOME/.fzf.zsh"
-
-# Git設定ファイルのシンボリックリンク
-create_symlink "$DOTFILES_DIR/.config/git/.gitconfig" "$HOME/.gitconfig"
 
 # .config ディレクトリのシンボリックリンクを作成
 echo "Creating symlinks for .config directory..."

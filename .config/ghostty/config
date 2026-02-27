@@ -8,7 +8,7 @@ font-size = 14
 adjust-cell-height = 10%
 # フォント 
 font-family = "Hack Nerd Font Mono"
-font-family = "Hiragino Sans ProN"
+font-family = "Hiragino Kaku Gothic ProN"
 font-feature = -dlig
 # アイコン
 macos-icon = holographic

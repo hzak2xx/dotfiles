@@ -20,3 +20,6 @@
 
 # 環境変数（秘匿情報）
 .env
+
+# Git個人設定（user.name, email, credential等）
+.config/git/local
