@@ -75,20 +75,30 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # dutiでデフォルトアプリケーションをVSCodeに設定
   echo "Setting default applications with duti..."
+  # UTIで広くカバー
   duti -s com.microsoft.VSCode public.plain-text all
   duti -s com.microsoft.VSCode public.source-code all
-  duti -s com.microsoft.VSCode .js all
-  duti -s com.microsoft.VSCode .ts all
-  duti -s com.microsoft.VSCode .tsx all
-  duti -s com.microsoft.VSCode .jsx all
-  duti -s com.microsoft.VSCode .json all
-  duti -s com.microsoft.VSCode .md all
-  duti -s com.microsoft.VSCode .yaml all
-  duti -s com.microsoft.VSCode .yml all
-  duti -s com.microsoft.VSCode .go all
-  duti -s com.microsoft.VSCode .py all
-  duti -s com.microsoft.VSCode .sh all
-  duti -s com.microsoft.VSCode .css all
+  duti -s com.microsoft.VSCode public.shell-script all
+  duti -s com.microsoft.VSCode public.script all
+  duti -s com.microsoft.VSCode public.xml all
+  # 個別の拡張子（アプリが独自UTIを登録して上書きする場合の対策）
+  local extensions=(
+    .js .ts .tsx .jsx .mjs .cjs
+    .json .jsonc .jsonl
+    .css .scss .sass .less
+    .html .htm .svg
+    .md .mdx .txt
+    .yaml .yml .toml .ini .cfg .conf .env
+    .sh .bash .zsh .fish
+    .py .rb .go .rs .java .kt .swift .c .cpp .h .hpp .cs
+    .sql .graphql .prisma
+    .xml .csv .log
+    .dockerfile .gitignore .gitattributes .editorconfig
+    .lua .vim .el
+  )
+  for ext in "${extensions[@]}"; do
+    duti -s com.microsoft.VSCode "$ext" all
+  done
 elif [[ "$OSTYPE" == "linux"* ]]; then
   # Linux向けのコマンド
   echo "Running on Linux"
