@@ -1,180 +1,181 @@
 {
-    "breadcrumbs.enabled": true,
-    "code-runner.runInTerminal": true,
-    "dart.debugExternalPackageLibraries": true,
-    "dart.debugSdkLibraries": true,
-    "editor.autoClosingBrackets": "always",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "editor.fontSize": 14,
-    "editor.fontLigatures": false,
-    "editor.inlineSuggest.enabled": true,
-    "emmet.includeLanguages": {
-        "erb": "html",
-        "wxml": "html"
-    },
-    "editor.tabCompletion": "on",
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "explorer.confirmPasteNative": false,
-    "files.autoSave": "off",
-    "files.associations": {
-        "*.erb": "erb",
-        "*.cjson": "jsonc",
-        "*.wxss": "css",
-        "*.wxs": "javascript"
-    },
-    "files.insertFinalNewline": true,
-    "git.autofetch": true,
-    "githubPullRequests.pullBranch": "never",
-    "github.copilot.enable": {
-        "*": true
-    },
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "json.schemaDownload.enable": true,
-    "minapp-vscode.disableAutoConfig": true,
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "vscode_vibrancy": {
-        "type": "auto",
-        "theme": "Monokai Pro",
-        "opacity": 0.01
-    },
-    "vscode-edge-devtools.webhintInstallNotification": true,
-    "vscode-edge-devtools.webhint": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons",
-    "window.titleBarStyle": "custom",
-    "[python]": {
-        "editor.formatOnType": true
-    },
-    "prisma.showPrismaDataPlatformNotification": false,
-    "github.copilot.editor.enableAutoCompletions": true,
-    "workbench.colorCustomizations": {
-        "terminal.background": "#00000000"
-    },
-    "workbench.settings.applyToAllProfiles": [
-        "workbench.colorCustomizations"
-    ],
-    "accessibility.signals.lineHasBreakpoint": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.chatRequestSent": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.chatResponseReceived": {
-        "sound": "off"
-    },
-    "accessibility.signals.clear": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.codeActionApplied": {
-        "sound": "off"
-    },
-    "accessibility.signals.codeActionTriggered": {
-        "sound": "off"
-    },
-    "accessibility.signals.onDebugBreak": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.diffLineDeleted": {
-        "sound": "off"
-    },
-    "accessibility.signals.diffLineInserted": {
-        "sound": "off"
-    },
-    "accessibility.signals.diffLineModified": {
-        "sound": "off"
-    },
-    "accessibility.signals.positionHasError": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.lineHasError": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.lineHasFoldedArea": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.lineHasInlineSuggestion": {
-        "sound": "off"
-    },
-    "accessibility.signals.noInlayHints": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.notebookCellCompleted": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.notebookCellFailed": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.progress": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.taskCompleted": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.taskFailed": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.terminalBell": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.terminalCommandFailed": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.terminalCommandSucceeded": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.terminalQuickFix": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.voiceRecordingStarted": {
-        "sound": "off"
-    },
-    "accessibility.signals.voiceRecordingStopped": {
-        "sound": "off"
-    },
-    "accessibility.signals.positionHasWarning": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "accessibility.signals.lineHasWarning": {
-        "sound": "off",
-        "announcement": "auto"
-    },
-    "workbench.editorAssociations": {
-        "*.svg": "default"
-    },
-    "dart.mcpServerLogFile": null,
-    "security.promptForLocalFileProtocolHandling": false,
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "json.schemaDownload.trustedDomains": {
-        "https://schemastore.azurewebsites.net/": true,
-        "https://raw.githubusercontent.com/": true,
-        "https://www.schemastore.org/": true,
-        "https://json.schemastore.org/": true,
-        "https://json-schema.org/": true,
-        "https://biomejs.dev": true
-    },
-    "gitlens.ai.model": "vscode",
-    "workbench.secondarySideBar.defaultVisibility": "hidden"
+	"breadcrumbs.enabled": true,
+	"code-runner.runInTerminal": true,
+	"dart.debugExternalPackageLibraries": true,
+	"dart.debugSdkLibraries": true,
+	"editor.autoClosingBrackets": "always",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"editor.fontSize": 14,
+	"editor.fontLigatures": false,
+	"editor.inlineSuggest.enabled": true,
+	"emmet.includeLanguages": {
+		"erb": "html",
+		"wxml": "html"
+	},
+	"editor.tabCompletion": "on",
+	"editor.tabSize": 2,
+	"editor.wordWrap": "on",
+	"explorer.confirmPasteNative": false,
+	"files.autoSave": "off",
+	"files.associations": {
+		"*.erb": "erb",
+		"*.cjson": "jsonc",
+		"*.wxss": "css",
+		"*.wxs": "javascript"
+	},
+	"files.insertFinalNewline": true,
+	"git.autofetch": true,
+	"githubPullRequests.pullBranch": "never",
+	"github.copilot.enable": {
+		"*": true
+	},
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"json.schemaDownload.enable": true,
+	"minapp-vscode.disableAutoConfig": true,
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"vscode_vibrancy": {
+	    "type": "auto",
+	    "theme": "Monokai Pro",
+	    "opacity": 0.01
+	},
+	"vscode-edge-devtools.webhintInstallNotification": true,
+	"vscode-edge-devtools.webhint": false,
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.colorTheme": "Monokai Pro",
+	"workbench.iconTheme": "Monokai Pro Icons",
+	"window.titleBarStyle": "custom",
+	"[python]": {
+		"editor.formatOnType": true
+	},
+	"prisma.showPrismaDataPlatformNotification": false,
+	"github.copilot.editor.enableAutoCompletions": true,
+	"workbench.colorCustomizations": {
+		"terminal.background": "#00000000"
+	},
+	"workbench.settings.applyToAllProfiles": ["workbench.colorCustomizations"],
+	"accessibility.signals.lineHasBreakpoint": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.chatRequestSent": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.chatResponseReceived": {
+		"sound": "off"
+	},
+	"accessibility.signals.clear": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.codeActionApplied": {
+		"sound": "off"
+	},
+	"accessibility.signals.codeActionTriggered": {
+		"sound": "off"
+	},
+	"accessibility.signals.onDebugBreak": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.diffLineDeleted": {
+		"sound": "off"
+	},
+	"accessibility.signals.diffLineInserted": {
+		"sound": "off"
+	},
+	"accessibility.signals.diffLineModified": {
+		"sound": "off"
+	},
+	"accessibility.signals.positionHasError": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.lineHasError": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.lineHasFoldedArea": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.lineHasInlineSuggestion": {
+		"sound": "off"
+	},
+	"accessibility.signals.noInlayHints": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.notebookCellCompleted": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.notebookCellFailed": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.progress": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.taskCompleted": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.taskFailed": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.terminalBell": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.terminalCommandFailed": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.terminalCommandSucceeded": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.terminalQuickFix": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.voiceRecordingStarted": {
+		"sound": "off"
+	},
+	"accessibility.signals.voiceRecordingStopped": {
+		"sound": "off"
+	},
+	"accessibility.signals.positionHasWarning": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"accessibility.signals.lineHasWarning": {
+		"sound": "off",
+		"announcement": "auto"
+	},
+	"workbench.editorAssociations": {
+		"*.svg": "default"
+	},
+	"dart.mcpServerLogFile": null,
+	"security.promptForLocalFileProtocolHandling": false,
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"json.schemaDownload.trustedDomains": {
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://biomejs.dev": true
+	},
+	"gitlens.ai.model": "vscode",
+	"workbench.secondarySideBar.defaultVisibility": "hidden",
+	"terminal.integrated.gpuAcceleration": "off",
+	"window.systemColorTheme": "dark",
+	"window.autoDetectColorScheme": false
 }

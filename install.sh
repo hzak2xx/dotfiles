@@ -82,7 +82,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   duti -s com.microsoft.VSCode public.script all
   duti -s com.microsoft.VSCode public.xml all
   # 個別の拡張子（アプリが独自UTIを登録して上書きする場合の対策）
-  local extensions=(
+  extensions=(
     .js .ts .tsx .jsx .mjs .cjs
     .json .jsonc .jsonl
     .css .scss .sass .less
@@ -166,17 +166,24 @@ if [ -d "$DOTFILES_DIR/.config/starship" ]; then
     create_symlink "$DOTFILES_DIR/.config/starship/starship.toml" "$HOME/.config/starship/starship.toml"
 fi
 
+# zsh-abbrの設定
+mkdir -p "$HOME/.config/zsh-abbr"
+if [ -f "$DOTFILES_DIR/.config/zsh-abbr/user-abbreviations" ]; then
+    create_symlink "$DOTFILES_DIR/.config/zsh-abbr/user-abbreviations" "$HOME/.config/zsh-abbr/user-abbreviations"
+fi
+
 # karabinerの設定
 mkdir -p "$HOME/.config/karabiner"
 if [ -f "$DOTFILES_DIR/.config/karabiner/karabiner.json" ]; then
     create_symlink "$DOTFILES_DIR/.config/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 fi
 
-# Cursorの設定
-mkdir -p "$HOME/.cursor"
+# VSCode/Cursorの設定
+mkdir -p "$HOME/Library/Application Support/Code/User"
 mkdir -p "$HOME/Library/Application Support/Cursor/User"
 
 if [ -f "$DOTFILES_DIR/.config/vscode/settings.json" ]; then
+    create_symlink "$DOTFILES_DIR/.config/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
     create_symlink "$DOTFILES_DIR/.config/vscode/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
 fi
 
@@ -386,6 +393,23 @@ if [ -f "$EXTENSIONS_FILE" ]; then
   fi
 else
   echo "Extensions file not found: $EXTENSIONS_FILE. Skipping VSCode/Cursor extensions installation."
+fi
+
+# =========================================
+# Raycastの設定インポート
+# =========================================
+RAYCAST_CONFIG="$DOTFILES_DIR/.config/raycast"
+RAYCAST_FILE=$(find "$RAYCAST_CONFIG" -name "*.rayconfig" -type f 2>/dev/null | head -1)
+
+if [ -n "$RAYCAST_FILE" ]; then
+    echo "Raycast config found: $RAYCAST_FILE"
+    echo "Opening Raycast import dialog..."
+    open "$RAYCAST_FILE"
+    echo "Please complete the Raycast import in the dialog window."
+else
+    echo "No .rayconfig file found in $RAYCAST_CONFIG."
+    echo "To export: Raycast Settings > Advanced > Export Settings & Data"
+    echo "Save the .rayconfig file to $RAYCAST_CONFIG/"
 fi
 
 echo "Done! Dotfiles have been installed."

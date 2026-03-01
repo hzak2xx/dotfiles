@@ -119,7 +119,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # =========================================
 # エイリアス
 # =========================================
-alias g="git"
 alias ls="eza"
 alias ll="eza -l --icons --git"
 alias la="eza -la --icons --git"

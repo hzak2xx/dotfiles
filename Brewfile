@@ -75,7 +75,7 @@ cask "session-manager-plugin"
 
 # GUI applications
 cask "1password"
-cask "adobe-creative-cloud"
+cask "google-chrome"
 cask "arc"
 cask "chatgpt"
 cask "chromium"
